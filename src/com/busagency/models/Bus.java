@@ -1,15 +1,14 @@
 package com.busagency.models;
-enum BusType{
-    AC, NON_AC, SLEEPER, SEATER
-}
-public class Bus {
-    int busId;
-    String startLocation;
-    String destination;
-    BusType busType;
-    boolean isAvailable = true;
 
-    public Bus(int busId, String startLocation, String destination, BusType busType, boolean isAvailable){
+public class Bus {
+    private String busId;
+    private String startLocation;
+    private String destination;
+    private BusType busType;
+    private boolean isAvailable;
+
+    // Constructor
+    public Bus(String busId, String startLocation, String destination, BusType busType, boolean isAvailable) {
         this.busId = busId;
         this.startLocation = startLocation;
         this.destination = destination;
@@ -17,15 +16,19 @@ public class Bus {
         this.isAvailable = isAvailable;
     }
 
-    public int getBusId(){
+    // Getters
+    public String getBusId() {
         return busId;
     }
-    public String getStartLocation(){
+
+    public String getStartLocation() {
         return startLocation;
     }
-    public  String getDestination(){
+
+    public String getDestination() {
         return destination;
     }
+
     public BusType getBusType() {
         return busType;
     }
@@ -34,7 +37,8 @@ public class Bus {
         return isAvailable;
     }
 
-    public void setBusId(int busId) {
+    // Setters
+    public void setBusId(String busId) {
         this.busId = busId;
     }
 
@@ -49,7 +53,14 @@ public class Bus {
     public void setBusType(BusType busType) {
         this.busType = busType;
     }
-    public void setAvailable(boolean isAvailable){
-        this.isAvailable = isAvailable;
+
+    public void setAvailable(boolean available) {
+        this.isAvailable = available;
+    }
+
+    @Override
+    public String toString() {
+        return "Bus ID: " + busId + ", Start Location: " + startLocation + ", Destination: " + destination +
+                ", Bus Type: " + busType + ", Available: " + isAvailable;
     }
 }
