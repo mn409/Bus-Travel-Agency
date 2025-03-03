@@ -30,17 +30,25 @@ public class BookingService {
         this.status = status;
     }
 
-    public void createPassenger(int passengerId, String name) {
+    public void createPassenger(int passengerId, String name, String phoneNumber, int age, String gender) {
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO passengers(passenger_id, name) VALUES (?, ?)");) {
+             PreparedStatement pstmt = connection.prepareStatement(
+                     "INSERT INTO passengers(passenger_id, name, age, gender, phoneNumber) VALUES (?, ?, ?, ?, ?)")) {
+
             pstmt.setInt(1, passengerId);
             pstmt.setString(2, name);
+            pstmt.setInt(3, age);
+            pstmt.setString(4, gender);
+            pstmt.setString(5, phoneNumber);
+
+
             pstmt.executeUpdate();
             System.out.println("Passenger added successfully!");
         } catch (SQLException e) {
             System.out.println("Error adding passenger: " + e.getMessage());
         }
     }
+
 
     public static double calculateFare(int distance, BusType busType) {
         double pricePerKm = switch (busType) {
@@ -63,7 +71,6 @@ public class BookingService {
             pstmt.setString(2, busId);
             pstmt.setInt(3, seatNo);
             pstmt.setDouble(4, price);
-            pstmt.setString(5, Status.PENDING.toString());
 
             int rowsEffected = pstmt.executeUpdate();
             if (rowsEffected > 0) {
@@ -84,7 +91,7 @@ public class BookingService {
 
             if (rs != null && rs.next()) {
                 System.out.println("Bus ID: " + rs.getString("bus_id"));
-                System.out.println("Start Location: " + rs.getString("start_location"));
+                System.out.println("Starting Point: " + rs.getString("start_Point"));
                 System.out.println("Destination: " + rs.getString("destination"));
                 System.out.println("Bus Type: " + rs.getString("bus_type"));
                 System.out.println("Availability: " + rs.getBoolean("is_available"));

@@ -2,7 +2,6 @@ package com.busagency.main;
 
 import com.busagency.services.SearchBus;
 import com.busagency.services.BookingService;
-import com.busagency.models.Bus;
 import com.busagency.models.BusType;
 
 import java.util.Scanner;
@@ -26,7 +25,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.print("Enter Start Location: ");
+                    System.out.print("Enter Starting Point: ");
                     String start = scanner.nextLine();
                     System.out.print("Enter Destination: ");
                     String destination = scanner.nextLine();
@@ -54,7 +53,7 @@ public class Main {
                     String gender = scanner.nextLine();
 
                     System.out.print("Enter Phone Number: ");
-                    String phone = scanner.nextLine();
+                    String phoneNumber = scanner.nextLine();
 
                     System.out.print("Enter Bus ID: ");
                     String busId = scanner.nextLine();
@@ -79,7 +78,8 @@ public class Main {
                             Random random = new Random();
                             int passengerId = random.nextInt(10000);
 
-                            bookingService.createPassenger(passengerId, name);
+                            bookingService.createPassenger(passengerId, name, phoneNumber, age, gender);
+
                             System.out.print("Enter Seat Number: ");
                             int seatNo = scanner.nextInt();
                             scanner.nextLine();

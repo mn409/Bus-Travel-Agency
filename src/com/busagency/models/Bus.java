@@ -2,15 +2,15 @@ package com.busagency.models;
 
 public class Bus {
     private String busId;
-    private String startLocation;
+    private String start_Point;
     private String destination;
     private BusType busType;
     private boolean isAvailable;
 
     // Constructor
-    public Bus(String busId, String startLocation, String destination, BusType busType, boolean isAvailable) {
+    public Bus(String busId, String start_Point, String destination, BusType busType, boolean isAvailable) {
         this.busId = busId;
-        this.startLocation = startLocation;
+        this.start_Point = start_Point;
         this.destination = destination;
         this.busType = busType;
         this.isAvailable = isAvailable;
@@ -21,8 +21,8 @@ public class Bus {
         return busId;
     }
 
-    public String getStartLocation() {
-        return startLocation;
+    public String getStart_Point() {
+        return start_Point;
     }
 
     public String getDestination() {
@@ -42,8 +42,8 @@ public class Bus {
         this.busId = busId;
     }
 
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
+    public void setStart_Point(String start_Point) {
+        this.start_Point = start_Point;
     }
 
     public void setDestination(String destination) {
@@ -60,7 +60,7 @@ public class Bus {
 
     @Override
     public String toString() {
-        return "Bus ID: " + busId + ", Start Location: " + startLocation + ", Destination: " + destination +
+        return "Bus ID: " + busId + ", Starting Point: " + start_Point + ", Destination: " + destination +
                 ", Bus Type: " + busType + ", Available: " + isAvailable;
     }
 }
